@@ -1,0 +1,106 @@
+﻿@model IEnumerable<AppWebSpa.Models.SpaService>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Spa</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #eef2f3;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #4a90e2;
+            margin-bottom: 30px;
+        }
+
+        .button-container {
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+            .btn:hover {
+                transform: scale(1.05);
+            }
+
+        .btn-create {
+            background-color: #28a745; /* Verde */
+        }
+
+        .btn-update {
+            background-color: #007bff; /* Azul */
+        }
+
+        .btn-delete {
+            background-color: #dc3545; /* Rojo */
+        }
+
+        .btn-search {
+            background-color: #ffc107; /* Amarillo */
+        }
+
+        .service-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .service-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 10px;
+            padding: 20px;
+            width: 280px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+  @*   <h1>Servicios de Spa</h1> *@
+
+    <div class="button-container">
+        <button class="btn btn-create"><i class="fas fa-plus"></i> Crear</button>
+        <button class="btn btn-update"><i class="fas fa-edit"></i> Actualizar</button>
+        <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
+        <button class="btn btn-search"><i class="fas fa-search"></i> Buscar</button>
+    </div>
+
+    <div class="service-list">
+        @foreach (var service in Model)
+        {
+            if (service != null)
+            {
+                <div class="service-item">
+                    <h2>@service.Name</h2>
+                <p>@service.Description</p>
+                <p>@service.Price COP</p>
+                </div>
+            } else
+            {
+                <div class="service-item">
+                    <h2>Aún no hay ningún registro</h2>
+                </div>
+            } 
+        }
+    </div>
+
+</body>
+</html>
