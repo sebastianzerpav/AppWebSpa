@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\AppWebSpa.csproj": {}
+    "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\OneDrive - PROVISION\\Escritorio\\Personal\\01 Programacion de Software\\SpaNathiva\\AppWebSpa\\AppWebSpa.csproj": {}
   },
   "projects": {
-    "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\AppWebSpa.csproj": {
+    "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\OneDrive - PROVISION\\Escritorio\\Personal\\01 Programacion de Software\\SpaNathiva\\AppWebSpa\\AppWebSpa.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\AppWebSpa.csproj",
+        "projectUniqueName": "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\OneDrive - PROVISION\\Escritorio\\Personal\\01 Programacion de Software\\SpaNathiva\\AppWebSpa\\AppWebSpa.csproj",
         "projectName": "AppWebSpa",
-        "projectPath": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\AppWebSpa.csproj",
-        "packagesPath": "C:\\Users\\sebas\\.nuget\\packages\\",
-        "outputPath": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\obj\\",
+        "projectPath": "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\OneDrive - PROVISION\\Escritorio\\Personal\\01 Programacion de Software\\SpaNathiva\\AppWebSpa\\AppWebSpa.csproj",
+        "packagesPath": "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\OneDrive - PROVISION\\Escritorio\\Personal\\01 Programacion de Software\\SpaNathiva\\AppWebSpa\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sebas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\lidergestionhumana.COOPROSEGUROS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,6 +55,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.5, )"
             }
           },
           "imports": [
@@ -76,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
