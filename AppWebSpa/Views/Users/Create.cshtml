@@ -4,50 +4,132 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<!DOCTYPE html>
+<html lang="es">
 
-<h4>User</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            color: #333;
+            margin: 0;
+        }
+      .container-all{
+          margin-top:4rem;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+      }
+
+        .container-general {
+            box-shadow: 0px 0px 3px 0px rgb(0 0 0 / 39%);
+            width: max-content;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .container-title {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .container-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: 700;
+        }
+
+        .container-button {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        input {
+            display: block;
+            width: 450px;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="container-all">
+        <div class="container-general">
+            <div class="container-title">
+                <h3>Usuario</h3>
             </div>
-            <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
+            <div class="container-form">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label">Nombre</label>
+                        <input asp-for="Name"  />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Phone" class="control-label">Teléfono</label>
+                        <input asp-for="Phone" type="number"  />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="BirthDate" class="control-label">Fecha de nacimiento</label>
+                        <input asp-for="BirthDate" type="date" />
+                        <span asp-validation-for="BirthDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label">Correo</label>
+                        <input asp-for="Email"  />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label">Contraseña</label>
+                        <input asp-for="Password" type="password"  />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="container-button">
+                        <input type="submit" value="Crear usuario" class="btn btn-primary" />
+                    </div>
+                    <div style="text-align:center; margin-top:1rem;">
+                        <a asp-action="Index">Ver todos los usuarios</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
+
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</body>
+
+</html>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
