@@ -16,7 +16,7 @@ namespace AppWebSpa.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<SpaService>().Property(
-                s => s.Price).HasColumnType("decimal(38,18)");
+                s => s.Price).HasColumnType("decimal(38,2)");
         }
 
     }
