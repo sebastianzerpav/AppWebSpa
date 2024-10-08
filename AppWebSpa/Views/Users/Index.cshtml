@@ -1,59 +1,140 @@
 ﻿@model IEnumerable<AppWebSpa.Models.User>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Usuarios";
 }
 
-<h1>Index</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BirthDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUser">Edit</a> |
-                <a asp-action="UserDetails" asp-route-id="@item.IdUser">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUser">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+    <!-- Estilos internos -->
+    <style>
+        body {
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+        }
+
+        .btn-create {
+            background-color: #1585089e;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px; 
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            border: 1px solid #ddd; 
+        }
+
+        th {
+            background-color: #33333359;
+            color: black;
+            text-align: center;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .actions {
+            text-align: center;
+        }
+
+        .actions a {
+            color: #333;
+            text-decoration: none;
+            margin: 0 5px;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .actions a.edit {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .actions a.details {
+            background-color: #FFC107;
+            color: white;
+        }
+
+        .actions a.delete {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .actions a.edit:hover {
+            background-color: #1976D2;
+        }
+
+        .actions a.details:hover {
+            background-color: #FFA000;
+        }
+
+        .actions a.delete:hover {
+            background-color: #d32f2f;
+        }
+
+        .container-title {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-title">
+        <h3>Usuarios actuales</h3>
+        <a href="@Url.Action("Create")" class="btn-create">Crear Nuevo Usuario</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Name)</th>
+                <th>@Html.DisplayNameFor(model => model.Phone)</th>
+                <th>@Html.DisplayNameFor(model => model.BirthDate)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                @* <th>@Html.DisplayNameFor(model => model.Password)</th> *@
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Phone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BirthDate)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    @* <td>@Html.DisplayFor(modelItem => item.Password)</td> *@
+                    <td class="actions">
+                        <a href="@Url.Action("Edit", new { id = item.IdUser })" class="edit">Editar</a>
+                        <a href="@Url.Action("UserDetails", new { id = item.IdUser })" class="details">Detalles</a>
+                        <a href="@Url.Action("Delete", new { id = item.IdUser })" class="delete">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
