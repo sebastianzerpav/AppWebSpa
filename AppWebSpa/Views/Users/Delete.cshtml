@@ -12,27 +12,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-color: #f0f2f5;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f44336, #c62828); /* Degradado de fondo */
             color: #333;
             margin: 0;
-            padding: 0;
+            font-family: 'Helvetica Neue', sans-serif; /* Fuente moderna */
+            padding: 20px; /* Espaciado alrededor */
         }
 
         .container-all {
-            margin-top: 2rem;
+            margin-top: 4rem;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
         .container-general {
-            background-color: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            max-width: 600px;
-            width: 100%;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+            width: 100%; /* Cambiado a 100% para más flexibilidad */
+            max-width: 600px; /* Ancho máximo para mantener el diseño */
+            padding: 1.5rem; /* Aumentado el padding */
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
         }
 
         .container-title {
@@ -40,15 +40,16 @@
             margin-bottom: 1.5rem;
         }
 
-        .container-title h3 {
-            font-size: 1.75rem;
-            color: #e74c3c;
-        }
+            .container-title h3 {
+                
+                font-size: 1.75rem;
+                font-weight: 700; /* Negrita */
+            }
 
         .details-card {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .detail-item {
@@ -59,56 +60,65 @@
             align-items: center;
         }
 
-        .detail-item .label {
-            font-weight: bold;
-            color: #555;
-        }
+            .detail-item .label {
+                font-weight: bold;
+                color: #555;
+            }
 
-        .detail-item .value {
-            color: #333;
-            font-size: 1rem;
-        }
+            .detail-item .value {
+                color: #333;
+                font-size: 1rem;
+            }
 
         .container-button {
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
-        .btn {
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
+            .container-button input[type="submit"], .link-view-users {
+                display: block; /* Hace que el botón y el enlace sean elementos de bloque */
+                width: 100%; /* Hace que ambos ocupen el ancho completo */
+                padding: 12px 24px; /* Asegúrate de que ambos tengan el mismo padding */
+                border-radius: 5px; /* Bordes redondeados */
+                text-align: center; /* Centra el texto */
+                font-weight: bold; /* Texto en negrita */
+                transition: background 0.3s, transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+            }
 
+        /* Estilos para el botón de eliminar */
         .btn-danger {
-            background-color: #e74c3c;
-            color: #fff;
+            background: #f44336; /* Color rojo */
+            color: #fff; /* Color del texto */
+            border: none; /* Sin borde */
+            cursor: pointer; /* Cambiar cursor a pointer */
         }
 
-        .btn-danger:hover {
-            background-color: #c0392b;
+            /* Efecto hover para el botón de eliminar */
+            .btn-danger:hover {
+                background: #c62828; /* Color más oscuro al pasar el ratón */
+                transform: scale(1.05);
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+            }
+
+        /* Estilos para el enlace de ver usuarios */
+        .link-view-users {
+            background: linear-gradient(135deg, #2196F3, #1E88E5); /* Degradado azul */
+            color: #fff; /* Color del texto */
+            text-decoration: none; /* Sin subrayado */
+            margin-top: 1rem; /* Separación del botón */
         }
 
-        .btn-secondary {
-            background-color: #6c757d;
-            color: #fff;
-        }
+            /* Efecto hover para el enlace de ver usuarios */
+            .link-view-users:hover {
+                background: linear-gradient(135deg, #1976D2, #1565C0); /* Color al pasar el ratón */
+                transform: scale(1.05); /* Efecto de aumento al pasar el ratón */
+            }
 
-        .btn-secondary:hover {
-            background-color: #5a6268;
-        }
-
-        .container-button {
-            margin-top: 2rem;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
     </style>
+
+
 </head>
 
 <body>
@@ -116,7 +126,7 @@
     <div class="container-all">
         <div class="container-general">
             <div class="container-title">
-                <h3>¿Eliminar Usuario?</h3>
+                <h3>¿Desea eliminar el usuario?</h3>
             </div>
 
             <div class="details-card">
@@ -151,7 +161,7 @@
                 <div class="container-button">
                     <input type="submit" value="Eliminar" class="btn btn-danger" />
                 </div>
-            <a asp-action="Index">Ver todos los usuarios</a>
+            <a asp-action="Index" class="link-view-users">Ver todos los usuarios</a>
             </form>
 
         </div>
