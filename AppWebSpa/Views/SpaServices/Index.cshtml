@@ -1,183 +1,40 @@
 ﻿@model IEnumerable<AppWebSpa.Models.SpaService>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios de Spa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #a8c66c, #d1e18a);
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-        }
+@{
+    ViewData["Title"] = "Servicios";
+}
 
-        h1 {
-            color: #4a90e2;
-            margin-bottom: 30px;
-        }
+<h1>Servicios</h1>
 
-        .button-container {
-            margin-bottom: 20px;
-        }
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Fecha de registro</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (SpaService spaService in Model) {
+        <tr>
+            <td>@spaService.Name</td>
+            <td>@spaService.Description</td>
+            <td>@spaService.Price</td>
+            <td>@spaService.RegistrationDateTime</td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@spaService.IdSpaService">Editar</a> |
+                <a class="btn btn-success" asp-action="ServiceDetails" asp-route-id="@spaService.IdSpaService">Detalle</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@spaService.IdSpaService">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
 
-        .btn {
-            padding: 10px 20px;
-            margin: 5px;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
 
-            .btn:hover {
-                transform: scale(1.05);
-            }
-
-        .btn-create {
-            background-color: #28a745; /* Verde */
-        }
-
-        .btn-update {
-            background-color: #007bff; /* Azul */
-        }
-
-        .btn-delete {
-            background-color: #dc3545; /* Rojo */
-        }
-
-        .btn-search {
-            background-color: #ffc107; /* Amarillo */
-        }
-
-        .service-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .service-item {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            margin: 10px;
-            padding: 20px;
-            width: 280px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .modal {
-            display: none; /* Oculto por defecto */
-            position: fixed; /* Mantenerlo en su lugar */
-            z-index: 1; /* Asegurarse de que esté en la parte superior */
-            left: 0;
-            top: 0;
-            width: 100%; /* Ancho completo */
-            height: 100%; /* Alto completo */
-            overflow: auto; /* Habilitar el desplazamiento si es necesario */
-            background-color: rgba(0, 0, 0, 0.4); /* Fondo negro semitransparente */
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto; /* Centrado */
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%; /* Ancho del modal */
-        }
-
-        .close {
-            color: #aaa;
-            float: right; /* Cerrar botón a la derecha */
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-            .close:hover,
-            .close:focus {
-                color: black;
-                text-decoration: none;
-                cursor: pointer;
-            }
-
-    </style>
-</head>
-<body>
-
-  @*   <h1>Servicios de Spa</h1> *@
-
-    <div class="button-container">
-        <button class="btn btn-create"><i class="fas fa-plus"></i> Crear</button>
-        <button class="btn btn-update"><i class="fas fa-edit"></i> Actualizar</button>
-        <button class="btn btn-delete"><i class="fas fa-trash"></i> Eliminar</button>
-        <button class="btn btn-search"><i class="fas fa-search"></i> Buscar</button>
-    </div>
-
-    <div class="service-list">
-
-        @if (!Model.Any())
-        {
-            <div class="service-item"><h2>No hay servicios registrados aún</h2>
-            </div>
-        }
-        else
-        {
-            foreach (var service in Model)
-            {   
-                <div class="service-item">
-                    <h2>@service.Name</h2>
-                    <p>@service.Description</p>
-                    <p>@service.Price COP</p>
-                </div>
-            } 
-        }
-    </div>
-
-    <!-- Modal -->
-    <div id="createModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Crear Servicio</h2>
-            <form method="post" action="/SpaServices/CreateSpaService">
-
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="Name" required>
-
-                <label for="description">Descripción:</label>
-                <input type="text" id="description" name="Description" required>
-
-                <label for="price">Precio:</label>
-                <input type="number" id="price" name="Price" required>
-
-                <button type="submit">Guardar</button>
-            </form>
-
-        </div>
-    </div>
-
-    <script>
-        // Función para abrir el modal
-        document.querySelector('.btn-create').onclick = function () {
-            document.getElementById('createModal').style.display = 'block';
-        };
-
-        // Función para cerrar el modal
-        function closeModal() {
-            document.getElementById('createModal').style.display = 'none';
-        }
-
-        // Cierra el modal si se hace clic fuera de él
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('createModal')) {
-                closeModal();
-            }
-        }
-    </script>
-
-</body>
-</html>
+@*Esta es la parte de saul, crud de servicios*@ 
