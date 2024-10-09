@@ -13,6 +13,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\wwwroot\\images\\Servicios.png",
+      "PackagePath": "staticwebassets\\images\\Servicios.png"
+    },
+    {
+      "Id": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\wwwroot\\images\\Usuarios.png",
+      "PackagePath": "staticwebassets\\images\\Usuarios.png"
+    },
+    {
       "Id": "D:\\VisualProjects\\AppWebSpa\\AppWebSpa\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
